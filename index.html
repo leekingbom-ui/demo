@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>公域订单转私域 Demo</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="demo-shell">
+      <section class="screen screen--app" id="apply-screen" aria-label="公域订单转私域申请页面">
+        <header class="nav-bar">
+          <a class="nav-action" href="#apply-screen">返回</a>
+          <h1 class="nav-title">公域订单转私域</h1>
+          <a class="nav-action nav-action--right" href="#detail-screen">订单明细</a>
+        </header>
+
+        <div class="screen-body screen-body--with-footer">
+          <section class="notice-card">
+            <p class="notice-text">填写说明规则</p>
+            <p class="notice-text">运营可配置</p>
+          </section>
+
+          <section class="content-card form-card">
+            <div class="field-group">
+              <label class="field-label" for="fan-phone">输入粉丝手机号：</label>
+              <input
+                class="text-input"
+                id="fan-phone"
+                type="tel"
+                inputmode="numeric"
+                placeholder="需确认粉丝已通过该手机号注册VTN成为你的客户"
+              />
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="order-id">输入公域订单号：</label>
+              <input
+                class="text-input"
+                id="order-id"
+                type="text"
+                placeholder="需填写满足转私域的公域订单号"
+              />
+            </div>
+          </section>
+        </div>
+
+        <footer class="screen-footer">
+          <button class="primary-button" type="button">提交申请</button>
+        </footer>
+      </section>
+
+      <section class="screen screen--detail" id="detail-screen" aria-label="公转私订单明细页面">
+        <header class="nav-bar">
+          <a class="nav-action" href="#apply-screen">返回</a>
+          <h1 class="nav-title">公转私订单明细</h1>
+          <span class="nav-action nav-action--ghost">返回</span>
+        </header>
+
+        <div class="screen-body">
+          <section class="notice-card">
+            <p class="notice-text">公转私订单说明规则</p>
+            <p class="notice-text">运营可配置</p>
+          </section>
+
+          <section class="order-list" aria-label="订单记录">
+            <article class="content-card order-card">
+              <div class="order-head">
+                <p class="meta-text">申请时间：2026.03.02 18:00</p>
+                <span class="status-chip status-chip--positive">已完成</span>
+              </div>
+              <div class="profile-row">
+                <img class="avatar-image" src="./avatar-01.jpg" alt="用户头像" />
+                <div class="profile-copy">
+                  <p class="name-text">林可宁</p>
+                  <p class="sub-copy">VTN注册客户</p>
+                </div>
+              </div>
+              <div class="order-info-group">
+                <p class="info-label">公域订单号</p>
+                <p class="info-text">dy1284999292949124</p>
+              </div>
+              <p class="status-line">
+                <span class="status-label">处理结果</span>
+                <span class="status-value status-value--positive">已处理完成（升级、送券、积分）</span>
+              </p>
+            </article>
+
+            <article class="content-card order-card">
+              <div class="order-head">
+                <p class="meta-text">申请时间：2026.03.02 18:00</p>
+                <span class="status-chip status-chip--positive">处理中</span>
+              </div>
+              <div class="profile-row">
+                <img class="avatar-image" src="./avatar-02.jpg" alt="用户头像" />
+                <div class="profile-copy">
+                  <p class="name-text">周奕辰</p>
+                  <p class="sub-copy">已匹配手机号</p>
+                </div>
+              </div>
+              <div class="order-info-group">
+                <p class="info-label">公域订单号</p>
+                <p class="info-text">dy1284999292949124</p>
+              </div>
+              <p class="status-line">
+                <span class="status-label">处理进度</span>
+                <span class="status-value status-value--positive">已确认处理中（升级）</span>
+              </p>
+            </article>
+
+            <article class="content-card order-card">
+              <div class="order-head">
+                <p class="meta-text">申请时间：2026.03.02 18:00</p>
+                <span class="status-chip status-chip--warning">已驳回</span>
+              </div>
+              <div class="profile-row">
+                <img class="avatar-image" src="./avatar-03.jpg" alt="用户头像" />
+                <div class="profile-copy">
+                  <p class="name-text">宋予安</p>
+                  <p class="sub-copy">待重新提交</p>
+                </div>
+              </div>
+              <div class="order-info-group">
+                <p class="info-label">公域订单号</p>
+                <p class="info-text">dy1284999292949124</p>
+              </div>
+              <p class="status-line">
+                <span class="status-label">驳回原因</span>
+                <span class="status-value status-value--warning">已驳回（订单不符合要求，请重新提交）</span>
+              </p>
+            </article>
+
+            <article class="content-card order-card">
+              <div class="order-head">
+                <p class="meta-text">申请时间：2026.03.02 18:00</p>
+                <span class="status-chip status-chip--positive">已回收</span>
+              </div>
+              <div class="profile-row">
+                <img class="avatar-image" src="./avatar-04.jpg" alt="用户头像" />
+                <div class="profile-copy">
+                  <p class="name-text">顾承泽</p>
+                  <p class="sub-copy">退款已同步回收</p>
+                </div>
+              </div>
+              <div class="order-info-group">
+                <p class="info-label">公域订单号</p>
+                <p class="info-text">dy1284999292949124</p>
+              </div>
+              <p class="status-line">
+                <span class="status-label">处理结果</span>
+                <span class="status-value status-value--positive">已处理完成（升级、送券、积分）- 订单退款已回收</span>
+              </p>
+            </article>
+
+            <article class="content-card order-card">
+              <div class="order-head">
+                <p class="meta-text">申请时间：2026.03.02 18:00</p>
+                <span class="status-chip">待确认</span>
+              </div>
+              <div class="profile-row">
+                <img class="avatar-image" src="./avatar-02.jpg" alt="用户头像" />
+                <div class="profile-copy">
+                  <p class="name-text">季清和</p>
+                  <p class="sub-copy">等待运营确认</p>
+                </div>
+              </div>
+              <div class="order-info-group">
+                <p class="info-label">公域订单号</p>
+                <p class="info-text">dy1284999292949124</p>
+              </div>
+              <p class="status-line">
+                <span class="status-label">当前状态</span>
+                <span class="status-value">待确认</span>
+              </p>
+            </article>
+          </section>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
