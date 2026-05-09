@@ -22,31 +22,48 @@
           </section>
 
           <section class="content-card form-card">
-            <div class="field-group">
-              <label class="field-label" for="fan-phone">输入粉丝手机号：</label>
-              <input
-                class="text-input"
-                id="fan-phone"
-                type="tel"
-                inputmode="numeric"
-                placeholder="需确认粉丝已通过该手机号注册VTN成为你的客户"
-              />
-            </div>
+            <form class="application-form" id="application-form" novalidate>
+              <div class="field-group">
+                <label class="field-label" for="fan-phone">输入粉丝手机号：</label>
+                <input
+                  class="text-input"
+                  id="fan-phone"
+                  name="fanPhone"
+                  type="tel"
+                  inputmode="numeric"
+                  autocomplete="tel"
+                  placeholder="需确认粉丝已通过该手机号注册VTN成为你的客户"
+                />
+              </div>
 
-            <div class="field-group">
-              <label class="field-label" for="order-id">输入公域订单号：</label>
-              <input
-                class="text-input"
-                id="order-id"
-                type="text"
-                placeholder="需填写满足转私域的公域订单号"
-              />
-            </div>
+              <div class="field-group">
+                <label class="field-label" for="order-id">输入公域订单号：</label>
+                <input
+                  class="text-input"
+                  id="order-id"
+                  name="orderId"
+                  type="text"
+                  autocomplete="off"
+                  placeholder="需填写满足转私域的公域订单号"
+                />
+              </div>
+
+              <p class="form-feedback" id="form-feedback" aria-live="polite">
+                提交后会写入运营数据库，页面仅展示当前设备最近提交的脱敏记录。
+              </p>
+            </form>
           </section>
         </div>
 
         <footer class="screen-footer">
-          <button class="primary-button" type="button">提交申请</button>
+          <button
+            class="primary-button"
+            id="submit-application"
+            form="application-form"
+            type="submit"
+          >
+            提交申请
+          </button>
         </footer>
       </section>
 
@@ -63,119 +80,41 @@
             <p class="notice-text">运营可配置</p>
           </section>
 
-          <section class="order-list" aria-label="订单记录">
-            <article class="content-card order-card">
-              <div class="order-head">
-                <p class="meta-text">申请时间：2026.03.02 18:00</p>
-                <span class="status-chip status-chip--positive">已完成</span>
-              </div>
-              <div class="profile-row">
-                <img class="avatar-image" src="./avatar-01.jpg" alt="用户头像" />
-                <div class="profile-copy">
-                  <p class="name-text">林可宁</p>
-                  <p class="sub-copy">VTN注册客户</p>
-                </div>
-              </div>
-              <div class="order-info-group">
-                <p class="info-label">公域订单号</p>
-                <p class="info-text">dy1284999292949124</p>
-              </div>
-              <p class="status-line">
-                <span class="status-label">处理结果</span>
-                <span class="status-value status-value--positive">已处理完成（升级、送券、积分）</span>
-              </p>
-            </article>
+          <section class="detail-summary">
+            <h2 class="section-title">当前设备最近提交记录</h2>
+            <p class="section-note">仅展示当前设备提交的脱敏记录，完整手机号只保存在运营数据库中。</p>
+          </section>
 
+          <p class="content-card empty-state" id="empty-state">还没有提交记录</p>
+
+          <section class="order-list" id="order-list" aria-label="订单记录"></section>
+
+          <template id="order-card-template">
             <article class="content-card order-card">
               <div class="order-head">
-                <p class="meta-text">申请时间：2026.03.02 18:00</p>
-                <span class="status-chip status-chip--positive">处理中</span>
+                <p class="meta-text" data-field="created-at"></p>
+                <span class="status-chip" data-field="status-chip"></span>
               </div>
               <div class="profile-row">
-                <img class="avatar-image" src="./avatar-02.jpg" alt="用户头像" />
+                <img class="avatar-image" src="./avatar-01.jpg" alt="当前设备提交头像" />
                 <div class="profile-copy">
-                  <p class="name-text">周奕辰</p>
-                  <p class="sub-copy">已匹配手机号</p>
+                  <p class="name-text">当前设备提交</p>
+                  <p class="sub-copy" data-field="masked-phone"></p>
                 </div>
               </div>
               <div class="order-info-group">
                 <p class="info-label">公域订单号</p>
-                <p class="info-text">dy1284999292949124</p>
+                <p class="info-text" data-field="order-id"></p>
               </div>
               <p class="status-line">
                 <span class="status-label">处理进度</span>
-                <span class="status-value status-value--positive">已确认处理中（升级）</span>
+                <span class="status-value" data-field="status-detail"></span>
               </p>
             </article>
-
-            <article class="content-card order-card">
-              <div class="order-head">
-                <p class="meta-text">申请时间：2026.03.02 18:00</p>
-                <span class="status-chip status-chip--warning">已驳回</span>
-              </div>
-              <div class="profile-row">
-                <img class="avatar-image" src="./avatar-03.jpg" alt="用户头像" />
-                <div class="profile-copy">
-                  <p class="name-text">宋予安</p>
-                  <p class="sub-copy">待重新提交</p>
-                </div>
-              </div>
-              <div class="order-info-group">
-                <p class="info-label">公域订单号</p>
-                <p class="info-text">dy1284999292949124</p>
-              </div>
-              <p class="status-line">
-                <span class="status-label">驳回原因</span>
-                <span class="status-value status-value--warning">已驳回（订单不符合要求，请重新提交）</span>
-              </p>
-            </article>
-
-            <article class="content-card order-card">
-              <div class="order-head">
-                <p class="meta-text">申请时间：2026.03.02 18:00</p>
-                <span class="status-chip status-chip--positive">已回收</span>
-              </div>
-              <div class="profile-row">
-                <img class="avatar-image" src="./avatar-04.jpg" alt="用户头像" />
-                <div class="profile-copy">
-                  <p class="name-text">顾承泽</p>
-                  <p class="sub-copy">退款已同步回收</p>
-                </div>
-              </div>
-              <div class="order-info-group">
-                <p class="info-label">公域订单号</p>
-                <p class="info-text">dy1284999292949124</p>
-              </div>
-              <p class="status-line">
-                <span class="status-label">处理结果</span>
-                <span class="status-value status-value--positive">已处理完成（升级、送券、积分）- 订单退款已回收</span>
-              </p>
-            </article>
-
-            <article class="content-card order-card">
-              <div class="order-head">
-                <p class="meta-text">申请时间：2026.03.02 18:00</p>
-                <span class="status-chip">待确认</span>
-              </div>
-              <div class="profile-row">
-                <img class="avatar-image" src="./avatar-02.jpg" alt="用户头像" />
-                <div class="profile-copy">
-                  <p class="name-text">季清和</p>
-                  <p class="sub-copy">等待运营确认</p>
-                </div>
-              </div>
-              <div class="order-info-group">
-                <p class="info-label">公域订单号</p>
-                <p class="info-text">dy1284999292949124</p>
-              </div>
-              <p class="status-line">
-                <span class="status-label">当前状态</span>
-                <span class="status-value">待确认</span>
-              </p>
-            </article>
-          </section>
+          </template>
         </div>
       </section>
     </main>
+    <script type="module" src="./app.js"></script>
   </body>
 </html>
